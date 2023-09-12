@@ -1,0 +1,317 @@
+@import url(https://db.onlinewebfonts.com/c/105007d99d9df64c50cc24d696d79555?family=Graphik+Web+Regular+Regular);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Graphik Web Regular Regular";
+  font-size: 1rem;
+  font-weight:bold;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+ul {
+  list-style:none;
+}
+
+#home {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://www.clashmusic.com/wp-content/uploads/2022/08/20220502_KENZO_edito_Look_8_2968-1024x683.jpg");
+  background-size: cover;
+  margin-top: -10rem;
+}
+
+#cart {
+  background: pink;
+  width: 100vw;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+.headerContainer, .homeHeaderContainer {
+  width: 100vw;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: transparent;
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
+  position: relative;
+}
+
+.homeHeaderContainer {
+  color: white;
+  transition: all 500ms ease;
+}
+
+.headerContainer{
+  color: black;
+}
+
+.homeHeaderContainer:hover {
+  background: white;
+  & #search{
+    border-bottom: 1px solid black;
+    color: black;
+  }
+  & li {
+    color: black;
+  }
+  & #favoritesIcon, #userIcon, #cartIcon {
+    filter: none;
+  }
+}
+
+.header {
+  width: 95vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoContainer {
+  padding: 0.5rem;
+  background: white;
+}
+
+.header img, .checkoutHeader img {
+  width: auto;
+  height: 5rem;
+  display: block;
+}
+
+.header .menu {
+  width: 60vw;
+  text-transform: uppercase;
+  & ul {
+    display:flex;
+    justify-content:space-between;
+  }
+}
+
+.homeHeaderContainer .menuIcon {
+  filter: invert(100%);
+}
+
+.menuIcon {
+  width: 2rem;
+  height: 2rem;
+  background-size: cover;
+}
+
+#favoritesIcon {
+  background-image: url("https://img.icons8.com/?size=512&id=86&format=png");
+}
+
+#userIcon {
+  background-image: url("https://img.icons8.com/?size=512&id=15263&format=png");
+}
+
+#cartIcon {
+  background-image: url("https://img.icons8.com/?size=512&id=22167&format=png");
+}
+
+#search {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid white;
+}
+
+.headerItem {
+  text-decoration: underline transparent 3px;
+  text-underline-offset: 0.5rem;
+}
+
+.headerItem:hover {
+  text-decoration: underline red 3px;
+}
+
+.sideBar {
+  width: 20rem;
+  height: 100vh;
+  position: fixed;
+  border-left: 1px solid #f3f3f3;
+  background: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sideBarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20rem;
+  padding: 1rem;
+}
+
+.formContainer input {
+  width: 100%;
+  height: 3rem;
+  background: #f3f3f3;
+  font-size: 0.8125rem;
+  font-weight: 100;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  margin-top: 2rem;
+}
+
+.formContainer input:first-child {
+  margin-top: 0rem;
+}
+
+.formContainer input:focus {
+  border: 2px solid #d0d0d0;
+}
+
+.userAddress {
+  width: 100%;
+  height: auto;
+  background: #f3f3f3;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.userAddress:first-child {
+  margin-top: 1rem;
+}
+
+.userAddress .addressData {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userAddress a {
+  width:fit-content;
+}
+
+.userAddress .left {
+  width: 14rem;
+}
+
+.userAddress .right {
+  width: 2rem;
+}
+
+.selected {
+  background-image: url("https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes-3/3/31-512.png");
+  background-size: cover;
+  width: 2rem;
+  height: 2rem;
+}
+
+.userAddress ul li, button {
+  font-size: 0.75rem;
+  font-weight: 100;
+}
+
+.userAddress ul{
+  padding-bottom: 0.75rem;
+}
+
+/* .sideBar button {
+  text-decoration: underline;
+  border: none;
+  outline: none;
+  background: transparent;
+} */
+
+.userAddress ul li:nth-child(1) {
+  font-weight: 800;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkoutHeader {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+
+.sidebarClose{
+  width: 100%;
+  border-bottom: 2px solid #f3f3f3;
+  display: flex;
+  justify-content:flex-end;
+}
+
+.sidebarClose button {
+  padding: 1rem;
+  border: none;
+  border-left: 2px solid #f3f3f3;
+  font-size: 1rem;
+  background: white;
+}
+
+.ctabutton {
+  width: 100%;
+  height: 1rem;
+  background: black;
+  padding: 1.2rem;
+  border-radius: 0.4rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.ctabutton:hover {
+  transition: all 300ms ease;
+  background: white;
+  color: black;
+}
+
+label {
+  display: flex;
+    flex-direction: column;
+}
+
+input[type="radio"]{
+    /* hide the inputs */
+    /* opacity: 0; */
+}
+
+/* style your lables/button */
+input[type="radio"] + label{
+    /* keep pointer so that you get the little hand showing when you are on a button */
+    cursor: pointer;
+    /* the following are the styles */
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    background: red;
+    color: #aaa;
+    border-radius: 3px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0);
+}
+
+input[type="radio"]:checked + label{
+    /* style for the checked/selected state */
+    background: #777;
+    border: 1px solid #444;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+    color: white;
+}
