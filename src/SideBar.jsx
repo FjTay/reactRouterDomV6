@@ -29,14 +29,6 @@ const SideBar = ({children, sidebar, show}) => {
                     variants={cardVariants}
                 >
                         <div className="sideBarContainer">
-                            <div className="sidebarClose">
-                                <Form
-                                    method="get"
-                                    action="/FR/checkout"    
-                                >
-                                    <button type="submit">&#x2573;</button>
-                                </Form>
-                            </div>
                             {children}
                         </div>
                 </motion.div>

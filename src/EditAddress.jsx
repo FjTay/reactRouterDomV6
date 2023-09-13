@@ -9,7 +9,6 @@ const EditAddress = () => {
   return (
     <>
       {console.log("++ Edit Address ++")}
-      <div style={{background: "red"}}>EditAddress</div>
       <NewAddress address={addresses?.find(address => address.id === addressID)}></NewAddress>
     </>
   )

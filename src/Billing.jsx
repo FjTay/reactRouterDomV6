@@ -1,10 +1,12 @@
 import { useContext } from "react"
 import { UserContext } from "./UserContext"
 import AddressCard from "./AddressCard"
+import { useLoaderData } from "react-router-dom"
 
 const Billing = () => {
 
   const userContext = useContext(UserContext)
+  const addresses = useLoaderData()
   const {
     data : {
       checkout: {
@@ -20,7 +22,7 @@ const Billing = () => {
         {billing &&
           <AddressCard
             isEditMode={false}
-            userAddress={billing}
+            userAddress={addresses.find(address => address.id === billing)}
             key={`userAddress-billing-selected`}
           />
         }

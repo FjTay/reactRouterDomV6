@@ -1,5 +1,9 @@
-import { Link, Form, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { getAddresses } from "./addressesHelpers";
+import AddressCard from "./AddressCard";
+import { useState, useContext, useEffect, useRef } from "react";
+import { UserContext } from "./UserContext";
+import SideBarClose from "./SideBarClose";
 
 export async function loader() {
     const addresses = await getAddresses()
@@ -9,50 +13,60 @@ export async function loader() {
 const UserAddresses = () => {
 
     const addresses = useLoaderData()
+    const navigate = useNavigate()
+    const selectedAddress = useRef()
+    const {data, setData} = useContext(UserContext)
+    const [currentAddress, setCurrentAddress] = useState(data.checkout.currentAddresses.billing)
+
+    useEffect(() => {
+        selectedAddress.current = currentAddress
+    }, [currentAddress])
+
+    useEffect(() => {
+        return (() => {
+            if(selectedAddress.current) {
+                setData(prevData => ({
+                    ...prevData,
+                    checkout: {
+                        ...prevData.checkout,
+                        currentAddresses: {
+                            ...prevData.checkout.currentAddresses,
+                            billing: selectedAddress.current.id
+                        }
+                    }
+                }))
+            }   
+        })
+    }, [])
+
+    const handleClose = () => {
+        setCurrentAddress(false)
+        navigate("/FR/checkout")
+    }
 
     return (
         <>
             {addresses.length ?
                 <>
-                    <Form
-                        action="/FR/checkout"
-                        method="post"
-                    >
-
-                            <h1>With Radios</h1>
-                            <span>
-                            <input id="Radio1" name="Radios" type="radio" checked/>
-                            <label for="Radio1">Option 1</label>
-                            </span>
-
-                            <span>
-                            <input id="Radio2" name="Radios" type="radio"/>
-                            <label for="Radio2">Option 2</label>
-                            </span>
-
-                            <span>
-                            <input id="Radio3" name="Radios" type="radio"/>
-                            <label for="Radio3">Option 3</label>
-                            </span>
-
-                        {/* {addresses.map((address, index) => (
-                            <div className="addressCard" key={`userAddress-${address.id}`}>
-                            <label className="custom-radio">
-                                <input
-                                type="radio"
-                                id={`userAddress-${address.id}`}
-                                name="userAddressGroup"
-                                value={JSON.stringify(address)}
-                                />
-                                {`Option ${index + 1}`}
-                            </label>
-                            </div>
-                        ))} */}
-                        <button 
-                            type="submit" 
-                            className="ctabutton"
-                        >SAVE BILLING ADDRESS</button>
-                    </Form>
+                    {/* <div className="sidebarClose">
+                        <button type="submit" onClick={() => handleClose()}>&#x2573;</button>
+                    </div> */}
+                    <SideBarClose callBack={handleClose}/>
+                    {addresses.length && 
+                        addresses.map((address, index) => 
+                            <AddressCard 
+                                key={`userAddressCard-${index}`} 
+                                isEditMode={true} 
+                                userAddress={address} 
+                                setCurrentAddress={setCurrentAddress} 
+                                isCurrentAddress={address.id === currentAddress?.id}
+                            />
+                        )
+                    }
+                    <button 
+                        type="button"
+                        className="ctabutton"
+                    ><Link to="/FR/checkout">SAVE BILLING ADDRESS</Link></button>
                 </>
                 : <>
                     <p>No addresses for this account</p>
@@ -64,17 +78,3 @@ const UserAddresses = () => {
 }
 
 export default UserAddresses
-
-{/* <>
-                {addresses.map((address, i) =>
-                    <AddressCard
-                        isEditMode={true}
-                        isCurrentAddress={currentAddress?.id === address.id}
-                        handleAddress={handleAddress}
-                        userAddress={address}
-                        index={i}
-                        key={`userAddress-${address.id}`}
-                    />)
-                }
-                    <button type="submit" className="ctabutton">SAVE BILLING ADDRESS</button>
-                </> */}

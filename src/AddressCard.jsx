@@ -1,20 +1,16 @@
 import { useMemo } from "react"
 import { Form, Link } from "react-router-dom"
 
-const AddressCard = ({isEditMode, userAddress, handleAddress, isCurrentAddress}) => {
+const AddressCard = ({isEditMode, userAddress, setCurrentAddress, isCurrentAddress}) => {
 
     const {address, addressName, city, country, postCode, id, updatedAt} = userAddress
-
-    const handleAddressCardActive = () => {
-        handleAddress(userAddress)
-    }
 
     const addresscard = useMemo(() => {
         return (
             <>
                 {console.log("++ Address Card++")}
                 <div className="userAddress" >
-                    <div className="addressData" onClick={() => isEditMode && handleAddressCardActive()}>
+                    <div className="addressData" onClick={() => isEditMode && setCurrentAddress(userAddress)}>
                         <div className="left">
                             <ul>
                                 {[addressName, address, postCode, city, country].map((item, i) => <li key={`address-card-${i}`}>{item}</li>)}

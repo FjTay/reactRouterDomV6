@@ -2,8 +2,6 @@ import { createAddress, updateaddress } from "./addressesHelpers"
 import { Link, Outlet, Form, useParams, redirect } from "react-router-dom"
 import SidebarManager from "./SidebarManager"
 import Billing from "./Billing"
-import { useContext } from "react"
-import { UserContext } from "./UserContext"
 
 let callBack;
 
@@ -14,7 +12,6 @@ export async function sidebarAction({request}) {
 
 const Checkout = () => {
 
-    const { data, setData } = useContext(UserContext)
     const params = useParams()  
     const switchAction = {
     "newAddress" : async (request) => {
@@ -29,22 +26,6 @@ const Checkout = () => {
         const updatedAddress = {...Object.fromEntries(formData), updatedAt: Date.now()}
         await updateaddress(params.addressID, updatedAddress)
         redirect("/FR/checkout/userAddresses")
-        return null
-    },
-    "userAddresses" : async (request) => {
-        const formData = await request.formData()
-        const {userAddress} = Object.fromEntries(formData)
-        console.log(userAddress)
-        setData(prevData => ({
-            ...prevData,
-            checkout: {
-                ...prevData.checkout,
-                currentAddresses: {
-                    ...prevData.checkout.currentAddresses,
-                    billing: JSON.parse(userAddress)
-                }
-            }
-        }))
         return null
     },
     "default" : () => alert("hello summary")
@@ -62,7 +43,6 @@ const Checkout = () => {
                     </Link>
                 </div>
             </div>
-            <Link to="/FR/checkout">Checkout</Link>
             <Link to="userAddresses/newAddress">New Address</Link>
             <Link to="userAddresses">User Address</Link>
             <Link to="orderSummary">Order Summary</Link>

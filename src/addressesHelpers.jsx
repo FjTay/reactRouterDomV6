@@ -11,7 +11,7 @@ export async function getAddresses() {
 export async function createAddress({address, addressName, city, country, postCode}) {
     await fakeBackEnd()
     let id = Math.random().toString(36).substring(2, 9)
-    let newAddress = {address, addressName, city, country, postCode, id, createdAt: Date.now(), updatedAt: ""}
+    let newAddress = {address, addressName, city, country, postCode, id, createdAt: Date.now(), updatedAt: "", isFav: false}
     let addresses = await getAddresses()
     addresses.unshift(newAddress)
     await set(addresses)

@@ -1,4 +1,5 @@
 import { useLoaderData, useNavigation, useParams, Form } from "react-router-dom";
+import SideBarClose from "./SideBarClose";
 
 const inputData = {
     addressName: ["Address Name", "text"],
@@ -16,26 +17,27 @@ const NewAddress = ({isEditMode}) => {
 
     return (
         <>
-        {console.log("++ New Address ++")}
-        <div className="formContainer">
-            <Form
-                    action="/FR/checkout/userAddresses"
-                    method="post"
-            >
-                {Object.entries(inputData).map(([key, [label, type]]) =>
-                    <input
-                        key={`address-input-${label}`}
-                        placeholder={label}
-                        aria-label={label}
-                        type={type}
-                        name={key}
-                        defaultValue={isEditMode ? addresses.find(address => address.id === addressID)?.[key] : ""}
-                    />
-                )}
-                <button type="submit" className="ctabutton">SAVE ADDRESS</button>
-            </Form>
-            {navigation.state === 'submitting' && <div>...saving</div>}
-        </div>
+            {console.log("++ New Address ++")}
+            <SideBarClose/>
+            <div className="formContainer">
+                <Form
+                        action="/FR/checkout/userAddresses"
+                        method="post"
+                >
+                    {Object.entries(inputData).map(([key, [label, type]]) =>
+                        <input
+                            key={`address-input-${label}`}
+                            placeholder={label}
+                            aria-label={label}
+                            type={type}
+                            name={key}
+                            defaultValue={isEditMode ? addresses.find(address => address.id === addressID)?.[key] : ""}
+                        />
+                    )}
+                    <button type="submit" className="ctabutton">SAVE ADDRESS</button>
+                </Form>
+                {navigation.state === 'submitting' && <div>...saving</div>}
+            </div>
         </>
     )
 }
