@@ -1,7 +1,7 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { UserContext } from "./UserContext"
 import AddressCard from "./AddressCard"
-import { useLoaderData } from "react-router-dom"
+import { useLoaderData, useParams } from "react-router-dom"
 
 const Billing = () => {
 
@@ -13,14 +13,18 @@ const Billing = () => {
         currentAddresses: {billing}
       }
     }
-  } = userContext;
+  } = userContext
+
+  const params = useParams()
 
   return (
     <div className="checkoutStep">
     {console.log("Billing")}
         <h2>Billing</h2>
-        {billing &&
+        {billing  &&
           <AddressCard
+            index={1}
+            show={true}
             isEditMode={false}
             userAddress={addresses.find(address => address.id === billing)}
             key={`userAddress-billing-selected`}

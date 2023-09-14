@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import NewAddress from "./NewAddress"
 import UserAddresses from "./UserAddresses"
 import SideBar from "./SideBar"
@@ -6,14 +6,14 @@ import { AnimatePresence } from "framer-motion"
 
 const SidebarManager = () => {
 
-  const params = useParams()  
+  const params = useParams()
+  const location = useLocation()
 
   return (
     <>
       <AnimatePresence>
         {console.log('++ SidebarManager ++')}
-        {
-        params.dataType === "userAddresses" &&
+        {params.dataType === "userAddresses" &&
           <SideBar  sidebar={"userAddresses"} show={params.dataType === "userAddresses"}>
             <UserAddresses></UserAddresses>
           </SideBar>

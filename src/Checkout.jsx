@@ -43,17 +43,17 @@ const Checkout = () => {
                     </Link>
                 </div>
             </div>
-            <Link to="userAddresses/newAddress">New Address</Link>
-            <Link to="userAddresses">User Address</Link>
-            <Link to="orderSummary">Order Summary</Link>
+            <Link to="userAddresses/newAddress">New Address</Link><br></br>
+            <Link to="userAddresses">User Address</Link><br></br>
+            <Link to="orderSummary">Order Summary</Link><br></br>
             <Billing />
             <Outlet/>
-            <Form
+            {/* <Form
                 method="post"
                 action=""
             >
                 <button type="submit">SUBMIT CHECKOUT</button>
-            </Form>
+            </Form> */}
         </div>
     )
 }
