@@ -31,6 +31,7 @@ const Header = ({isHome}) => {
           )}
         </div>
       </div>
+      <h3>Click the heart shaped icon to get to the checkout</h3>
     </nav>
   )
 }
