@@ -256,9 +256,13 @@ a {
   justify-content: left;
 }
 
-.sidebarClose{
-  width: 100%;
+.sidebarClose {
+  width: calc(100% + 2rem);
   border-bottom: 2px solid #f3f3f3;
+}
+
+.sidebarClose form {
+  width: 100%;
   display: flex;
   justify-content:flex-end;
 }
